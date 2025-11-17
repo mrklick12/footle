@@ -1,0 +1,111 @@
+.scorecard
+{
+    margin: auto;
+    margin-top: 15px;
+    padding: 5px;
+    border-radius: 15px;
+    display: grid;
+    width: clamp(20rem, 40vw, 36rem);
+    height: clamp(10rem, 10vw, 12rem);
+}
+
+.team1
+{
+    text-align:center;
+    position: absolute;
+    left: 0px;
+    top: 40px;
+    width: 40%;
+    padding: 10px;
+    height: clamp(4rem, 10vw, 8rem);
+}
+.team2
+{
+    text-align:center;
+    position: absolute;
+    right: 0px;
+    top: 40px;
+    width: 40%;
+    padding: 10px;
+    height: clamp(4rem, 10vw, 8rem);
+
+
+
+}
+
+
+
+.scores
+{
+    text-align:center;
+    position: absolute;
+    left: 50%;
+    top: 55%;
+    transform: translate(-50%, -50%);
+    padding: 5px;
+    width: 30%;
+}
+
+.search
+{
+    display: flex;
+    margin:auto;
+    text-align:center;
+    width:clamp(10%, 20%, 30%);
+}
+
+@keyframes neonPulse {
+    0% {
+        text-shadow:
+            0 0 5px #ff0000,
+            0 0 10px #ff0000,
+            0 0 20px #ff0000,
+            0 0 30px #ff0000,
+            0 0 40px #ff0000;
+    }
+    50% {
+        text-shadow:
+            0 0 10px #ff4d4d,
+            0 0 20px #ff4d4d,
+            0 0 30px #ff4d4d,
+            0 0 40px #ff4d4d,
+            0 0 50px #ff4d4d;
+    }
+    100% {
+        text-shadow:
+            0 0 5px #ff0000,
+            0 0 10px #ff0000,
+            0 0 20px #ff0000,
+            0 0 30px #ff0000,
+            0 0 40px #ff0000;
+    }
+}
+
+
+.flashing
+{
+    color: red;
+    margin-top: 15px;
+    text-align: center;
+    font-weight: bold;
+    animation: neonPulse 1.5s infinite alternate;
+
+}
+
+.competitionTitle
+{
+    display: block;
+    margin: auto;
+    width: clamp(15rem, 20vw, 20rem);
+}
+
+h1, h2, h5
+{
+    margin-top: 20px;
+    text-align: center;
+}
+
+div[data-hide="true"]
+{
+    display: none;
+}

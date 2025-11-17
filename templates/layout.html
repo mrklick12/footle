@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+
+    <!-- Defualt Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap with Vapor theme -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/vapor/bootstrap.min.css">
+
+
+    <!-- Any adjustments with personal css and js-->
+    <link href="/static/styles.css" rel="stylesheet">
+    <script src="/static/functions.js"></script>
+
+    <title>{% block title %} {% endblock%} </title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+
+
+
+</head>
+
+<body>
+        <!--TAKEN FROM THE FREE CYBERPUNK THEME ON BOOTSWATCH-->
+
+
+<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Footle</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="{{ url_for('index') }}">PL
+            <span class="visually-hidden">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('laliga') }}">La Liga</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('bundasliga') }}">Bundasliga</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('ligue1') }}">Ligue 1</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Other</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="{{ url_for('championsleague') }}">Champions League</a>
+            <a class="dropdown-item" href="{{ url_for('seriea') }}">Serie A</a>
+            <a class="dropdown-item" href="{{ url_for('worldcup') }}">World Cup</a>
+        </li>
+      </ul>
+      
+    </div>
+  </div>
+</nav>
+
+
+    {% block main %}{% endblock %}
+</body>
+
+</html>

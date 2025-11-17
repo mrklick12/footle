@@ -1,0 +1,95 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {{title}}
+{% endblock %}
+
+{% block main %}
+
+
+    <img class="competitionTitle" src="{{logo}}">
+    <h2>Upcoming Matches for {{teamname}}</h2>
+
+    <div class="search">
+        <input type="text" class="form-control" placeholder="Team" id="team" data-hide="false">
+        <button type="button" class="btn btn-secondary">Search</button>
+    </div>
+
+
+
+
+
+    {% if upcoming_matches %}
+        {% for match in upcoming_matches %}
+        <div class="card border-primary mb-3 scorecard"
+            id="card-{{loop.index}}"
+            data-home="{{ match['homeTeam']['name'] | lower }}"
+            data-away="{{ match['awayTeam']['name'] | lower }}">
+            <div class="card-header" style="text-align:center">{{match["homeTeam"]["name"]}} VS {{match["awayTeam"]["name"]}}</div>
+
+            <div class="team1">
+                <img src={{match["homeTeam"]["crest"]}} alt="Home Logo" width="60" height="60">
+                <br>
+                <h6>{{match["homeTeam"]["shortName"]}}</h6>
+                <form action="/teamstats"  method="get">
+                    <input type="hidden" name="team" value="{{ match['homeTeam']['name'] }}">
+                    <button type="submit" class="btn btn-info">Check Stats</button>
+                </form>
+            </div>
+
+            <div class="scores">
+                <h4 id="date-{{ loop.index }}"></h4>
+                {% if match["score"]["winner"] == None %}
+                    <script> document.getElementById("date-{{loop.index}}").innerText = formatDate("{{match['utcDate']}}"); </script>
+                {% else %}
+                    <h2> {{ match["score"]["fullTime"]["home"] }} - {{ match["score"]["fullTime"]["away"] }} </h2>
+                {% endif %}
+            </div>
+
+            <div class="team2">
+                <img src={{match["awayTeam"]["crest"]}} alt="Away Logo" width="60" height="60">
+                <br>
+                <h6>{{match["awayTeam"]["shortName"]}}</h6>
+                <form action="/teamstats"  method="get">
+                    <input type="hidden" name="team" value="{{ match['awayTeam']['name'] }}">
+                    <button type="submit" class="btn btn-danger">Check Stats</button>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <h2>No matches found for {{teamname}}</h2>
+    {% endif %}
+
+    <script id="match-data" type="application/json">
+        {{ upcoming_matches | tojson | safe }}
+    </script>
+
+    <script>
+        const allMatches = JSON.parse(
+            document.getElementById("match-data").textContent
+        );
+    </script>
+
+
+    <script>
+        document.querySelector(".search button").addEventListener("click", () => {
+            const query = document.getElementById("team").value.trim().toLowerCase();
+
+            document.querySelectorAll(".scorecard").forEach(card => {
+                const home = card.getAttribute("data-home");
+                const away = card.getAttribute("data-away");
+
+                if (query === "") {
+                    card.style.display = "block";      // show all
+                } else if (home.includes(query) || away.includes(query)) {
+                    card.style.display = "block";      // show matching
+                } else {
+                    card.style.display = "none";       // hide others
+                }
+            });
+        });
+    </script>
+
+{% endblock %}
+
