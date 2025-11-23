@@ -16,7 +16,7 @@ such as the Premier Leaguue's Logo, are stored in there. This was because I didn
 creative and unique way to still show the images on my wesbite.
 
 
-The Project itself...
+<h3>The Project itself...</h3>
 
 The project uses football data.org's free API, which has access to many competitions with live score data. It uses the requests library to open a http client and send requests to the API using the API key and a "header" parameter. When prompted with the right league, it returns all the upcoming matches in one big dictionary, which you can sort through using key-value pairs, for example using dictionary comprehension you can see all the upcoming matches using list["matches"]. This large dictionary passed as an argument into the website when rendered which is then, using jinija, is iterated over and (using CSS and HTML) creates lots of div tags which include the logo, title and date of the match.
 
@@ -28,7 +28,7 @@ This was a problem.
 
 So I added a cache. When the requests are sent, they are stored locally in app.py and are updated every 10 minutes. Not only does this fix the issue of the website crashing, but it also increases the speed of the site loading as the website can just check the cache for the data rather than request and wait for the API to respond which can sometimes take a few seconds.
 
-I also learned how to do CSS animation using keyframes and glow effects which I applied on my <h1> tag, which is used for the "LIVE!" part of live matches.
+I also learned how to do CSS animation using keyframes and glow effects which I applied on my h1 tag, which is used for the "LIVE!" part of live matches.
 
 In addition to these core features, I also spent time making the website easier to navigate and more intuitive for users. This included refining the layout of match cards, experimenting with different Bootstrap components, and ensuring the interface worked smoothly on both desktop and mobile devices. I wanted the experience to feel clean and responsive, especially because football fixtures are something people often check quickly and casually.
 
