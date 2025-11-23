@@ -36,6 +36,9 @@ Another challenge I faced was error-handling, particularly when the API returned
 
 Overall, this project taught me a lot about full-stack development, debugging, and designing a practical application that solves a real problem.
 
+<img width="1857" height="799" alt="image" src="https://github.com/user-attachments/assets/4a6896a9-f112-46dd-88fd-5e17fb33173f" />
+
+
 This was Footle by Ali Sheikh.
 
 And this was CS50.
